@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: 'AppLogin',
+  name: 'AppHome',
   data () {
     return {}
   }
