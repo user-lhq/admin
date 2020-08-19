@@ -1,11 +1,11 @@
 <template>
   <div>
-    <p>home</p>
+    <p>AppHeader</p>
   </div>
 </template>
 <script>
 export default {
-  name: 'AppHome',
+  name: 'AppHeader',
   data () {
     return {}
   }

@@ -11,7 +11,7 @@
       </el-col>
       <el-col :offset="1" :span="9">
         <!-- <el-button type="success" @click="handleSendCode">获取验证码</el-button> -->
-        <el-button type="success" @click="handleSendCode" :disabled="!!codeTimer">{{ codeTimer ? `剩余${codeTimeSeconds
+        <el-button type="success" @click="codeCountDown" :disabled="!!codeTimer">{{ codeTimer ? `剩余${codeTimeSeconds
           }秒` : '获取验证码'}}</el-button>
       </el-col>
     </el-form-item>

@@ -1,16 +1,16 @@
 <template>
   <div>
-    <p>home</p>
+    <p>Publish</p>
   </div>
 </template>
 <script>
 export default {
-  name: 'AppHome',
+  // name: 'Publish',
   data () {
     return {}
   }
 }
 </script>
-<style lang="less" scoped>
+<style lang="less">
 
 </style>
