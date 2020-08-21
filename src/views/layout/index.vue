@@ -39,7 +39,7 @@ export default {
       background: #343a46;
     }
     .el-header {
-      background: hotpink;
+      background: pink;
     }
     .el-main {
       background:skyblue;
