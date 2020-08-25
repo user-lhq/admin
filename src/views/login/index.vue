@@ -26,7 +26,6 @@
 </div>
 </template>
 <script>
-import axios from 'axios'
 import '@/vendor/gt'
 import { saveUser } from '@/utils/auth'
 import initGeetest from '@/utils/init.geetest'
@@ -70,9 +69,9 @@ export default {
     },
     async submitLogin () {
       try {
-        const res = await axios({
+        const res = await this.$http({
           method: 'post',
-          url: 'http://ttapi.research.itcast.cn/mp/v1_0/authorizations',
+          url: '/authorizations',
           data: this.form
         })
         const userInfo = res.data.data
@@ -103,9 +102,9 @@ export default {
     // 验证通过，初始化显示人机交互验证码
     async showGeetest () {
       const { mobile } = this.form
-      const res = await axios({
+      const res = await this.$http({
         method: 'get',
-        url: `http://ttapi.research.itcast.cn/mp/v1_0/captchas/${mobile}`
+        url: `/captchas/${mobile}`
       })
       const { data } = res.data
       const captchaObj = await initGeetest({
@@ -128,9 +127,9 @@ export default {
           geetest_seccode: seccode,
           geetest_validate: validate
         } = captchaObj.getValidate()
-        await axios({
+        await this.$http({
           method: 'get',
-          url: `http://ttapi.research.itcast.cn/mp/v1_0/sms/codes/${mobile}`,
+          url: `/sms/codes/${mobile}`,
           params: {
             challenge,
             validate,
