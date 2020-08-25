@@ -4,7 +4,8 @@
     <el-col :span="5" :offset="5" class="el-fl">
       <el-dropdown>
         <span class="el-dropdown-link">
-          <img width="20px" :src="userInfo.photo" alt="">
+          <!-- <img width="20px" :src="userInfo.photo" alt=""> -->
+          <img width="20px" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1671247724,3484152546&fm=26&gp=0.jpg" alt="">
           {{ userInfo.name }}<i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
@@ -17,6 +18,7 @@
   </el-row>
 </template>
 <script>
+import { removeUser, getUser } from '@/utils/auth'
 export default {
   name: 'AppHeader',
   data () {
@@ -25,7 +27,8 @@ export default {
     }
   },
   created () {
-    this.userInfo = JSON.parse(window.localStorage.getItem('user_info'))
+    // this.userInfo = JSON.parse(window.localStorage.getItem('user_info'))
+    this.userInfo = getUser()
   },
   methods: {
     handleLogout () {
@@ -36,7 +39,8 @@ export default {
         type: 'warning'
       }).then(() => {
         // 清空本地存储中的 user_info
-        window.localStorage.removeItem('user_info')
+        // window.localStorage.removeItem('user_info')
+        removeUser()
         // 跳转到登录页
         this.$router.push({ name: 'login' })
         this.$message({
