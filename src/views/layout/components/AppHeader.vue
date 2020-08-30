@@ -1,6 +1,6 @@
 <template>
   <el-row :gutter="20">
-    <el-col :span="10">有福同享有难退群教育科技股份有限公司</el-col>
+    <el-col :span="10">北京顺义区传智播客教育科技股份有限公司</el-col>
     <el-col :span="5" :offset="5" class="el-fl">
       <el-dropdown>
         <span class="el-dropdown-link">
