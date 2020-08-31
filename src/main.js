@@ -7,14 +7,36 @@ import './styles/index.less'
 import '../node_modules/nprogress/nprogress.css'
 import axios from 'axios'
 import { getUser, removeUser } from '@/utils/auth'
+import JSONbig from 'json-bigint'
 
+// 线上接口直接使用手机号+ 246810 就可以直接登录
+// axios.defaults.baseURL = 'http://toutiao.course.itcast.cn/mp/v1_0'
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0'
 
+// axios 预留的自定义处理后端返回的原始数据
+// 可以理解成一个响应拦截器，这个比较特殊
+// 这里的 data 是后盾返回的未经处理的原始数据
+// axios 默认使用 JSON.parse 去转换原始数据, 如果其中有超出安全证书范围的数据就有问题了
+// 所以我们这里可以手动处理这个原始数据
+// npm i json-bigint
+axios.defaults.transformResponse = [function (data) {
+  // return data
+  // 这里使用 JSONbig.parse 转换原始数据
+  // 类似于 JSON.parse
+  // 但是它会处理其中超出安全整数范围的整数问题
+  // 严禁一点，如果 data 不是 json 格式字符串就会报错
+  try {
+    // 如果是 json 格式字符串，那就转换并返回后续使用
+    return JSONbig.parse(data)
+  } catch (err) {
+    // 报错就意味着 data 不是 json 格式字符串， 这里就直接原数据返回给后续使用
+    return data
+  }
+}]
 // 添加请求拦截器：axios 发出去的请求会先经过这里
 axios.interceptors.request.use(config => {
   // 在发送请求之前做些什么
   // console.log('请求进入了拦截器')
-
   const user = getUser()
   // config 是本次请求的相关配置 对象
   // console.log(config)
