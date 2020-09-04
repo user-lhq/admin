@@ -122,7 +122,12 @@
       <el-table-column
         label="操作">
         <template slot-scope="scope">
-          <el-button type="primary" size="mini" plain round>修改</el-button>
+          <el-button
+            type="primary"
+            size="mini"
+            plain
+            round
+            @click="$router.push(`/publish/${scope.row.id}`)">修改</el-button>
           <el-button type="danger" size="mini" round plain @click="handleDelete(scope.row)">删除</el-button>
         </template>
       </el-table-column>
@@ -240,10 +245,10 @@ export default {
           method: 'GET',
           url: '/channels'
         })
-        console.log(data)
+        // console.log(data)
         this.channels = data.channels
       } catch (err) {
-        console.log(err)
+        // console.log(err)
         this.$message.error('获取频道数据失败')
       }
     },
@@ -289,7 +294,7 @@ export default {
       }
     },
     handleCurrentChange (page) {
-      console.log(page)
+      // console.log(page)
       // 将数据中的页码修改为当前最新改变的数据页码
       this.page = page
       // 页码改变重新加载当前文章列表

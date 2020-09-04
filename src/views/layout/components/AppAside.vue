@@ -29,7 +29,7 @@
         <i class="el-icon-menu"></i>
         <span slot="title">内容列表</span>
       </el-menu-item>
-      <el-menu-item index="1-3">
+      <el-menu-item index="/comment">
         <i class="el-icon-menu"></i>
         <span slot="title">评论列表</span>
       </el-menu-item>

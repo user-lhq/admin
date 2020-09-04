@@ -32,6 +32,16 @@ const router = new VueRouter({
           name: 'article',
           path: '/article',
           component: () => import('@/views/article')
+        },
+        {
+          name: 'publish-edit',
+          path: '/publish/:id',
+          component: () => import('@/views/publish')
+        },
+        {
+          name: 'comment',
+          path: '/comment',
+          component: () => import('@/views/comment')
         }
       ]
     },
