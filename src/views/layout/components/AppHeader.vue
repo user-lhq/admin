@@ -4,9 +4,9 @@
     <el-col :span="5" :offset="5" class="el-fl">
       <el-dropdown>
         <span class="el-dropdown-link">
-          <!-- <img width="20px" :src="userInfo.photo" alt=""> -->
-          <img width="20px" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1671247724,3484152546&fm=26&gp=0.jpg" alt="">
-          {{ userInfo.name }}<i class="el-icon-arrow-down el-icon--right"></i>
+          <img width="20px" :src="$store.state.user.photo" alt="">
+          <!-- <img width="20px" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1671247724,3484152546&fm=26&gp=0.jpg" alt=""> -->
+          {{ $store.state.user.name }}<i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>用户设置</el-dropdown-item>
@@ -18,17 +18,18 @@
   </el-row>
 </template>
 <script>
-import { removeUser, getUser } from '@/utils/auth'
+import { removeUser } from '@/utils/auth'
+// import { removeUser, getUser } from '@/utils/auth'
 export default {
   name: 'AppHeader',
   data () {
     return {
-      userInfo: {}
+      // userInfo: {}
     }
   },
   created () {
     // this.userInfo = JSON.parse(window.localStorage.getItem('user_info'))
-    this.userInfo = getUser()
+    // this.userInfo = getUser()
   },
   methods: {
     handleLogout () {

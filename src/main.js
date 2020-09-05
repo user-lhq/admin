@@ -8,6 +8,7 @@ import '../node_modules/nprogress/nprogress.css'
 import axios from 'axios'
 import { getUser, removeUser } from '@/utils/auth'
 import JSONbig from 'json-bigint'
+import store from './store'
 
 // 线上接口直接使用手机号+ 246810 就可以直接登录
 // axios.defaults.baseURL = 'http://toutiao.course.itcast.cn/mp/v1_0'
@@ -89,5 +90,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  store, // 将store 配置到 Vue 根实例中，然后所有组件就可以通过 this.$store 来访问容器中的数据了
   render: h => h(App)
 }).$mount('#app')
