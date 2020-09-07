@@ -80,13 +80,13 @@ export default {
   },
   methods: {
     async loadArticle () {
-      console.log('hello')
+      // console.log('hello')
       try {
         const data = await this.$http({
           method: 'GET',
           url: `/articles/${this.$router.currentRoute.params.id}`
         })
-        console.log(data)
+        // console.log(data)
         this.articleForm = data
       } catch (err) {
         console.log(err)
